@@ -53,10 +53,10 @@
                         <table class="w-full">
                             <thead class="border-b border-neutral-200 dark:border-neutral-700">
                                 <tr>
-                                    <th class="pb-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Photo</th>
-                                    <th class="pb-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Book</th>
-                                    <th class="pb-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Contact</th>
-                                    <th class="pb-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Category</th>
+                                    <th class="pb-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Cover</th>
+                                    <th class="pb-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Title</th>
+                                    <th class="pb-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Author</th>
+                                    <th class="pb-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Genre</th>
                                     <th class="pb-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Deleted At</th>
                                     <th class="pb-3 text-right text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Actions</th>
                                 </tr>
@@ -65,8 +65,8 @@
                                 @foreach($books as $book)
                                     <tr class="hover:bg-neutral-50 dark:hover:bg-neutral-700/50">
                                         <td class="py-4">
-                                            @if($book->photo)
-                                                <img src="{{ asset('storage/' . $book->photo) }}"
+                                            @if($book->image)
+                                                <img src="{{ asset('storage/' . $book->image) }}"
                                                      alt="{{ $book->name }}"
                                                      class="h-10 w-10 rounded-full object-cover">
                                             @else
@@ -79,21 +79,18 @@
                                         </td>
                                         <td class="py-4">
                                             <div class="text-sm font-medium text-neutral-900 dark:text-neutral-100">
-                                                {{ $book->name }}
+                                                {{ $book->title }}
                                             </div>
                                         </td>
                                         <td class="py-4">
                                             <div class="text-sm text-neutral-600 dark:text-neutral-400">
-                                                {{ $book->email }}
-                                            </div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-500">
-                                                {{ $book->phone }}
+                                                {{ $book->author }}
                                             </div>
                                         </td>
                                         <td class="py-4">
                                             @if($book->category)
                                                 <span class="inline-flex rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
-                                                    {{ $book->category->category_name }}
+                                                    {{ $book->category->name }}
                                                 </span>
                                             @else
                                                 <span class="text-xs text-neutral-500 dark:text-neutral-500">No category</span>

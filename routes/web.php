@@ -12,7 +12,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/dashboard', [BookController::class, 'index'])
-    -middleware(['auth', 'verified'])
+    ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
@@ -24,6 +24,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/books/trash', [BookController::class, 'trash'])->name('books.trash');
     Route::post('/books/{id}/restore', [BookController::class, 'restore'])->name('books.restore');
     Route::delete('/books/{id}/force-delete', [BookController::class, 'forceDelete'])->name('books.force-delete');
+
+    Route::get('/books/export', [BookController::class, 'export'])->name('books.export');
 });
 
 Route::middleware(['auth'])->group(function () {
